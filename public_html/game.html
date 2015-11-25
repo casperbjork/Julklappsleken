@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) Error: on line 4, column 33 in Templates/Licenses/license-gpl30.txt
+The string doesn't match the expected date/time format. The string to parse was: "2015-mar-27". The expected format was: "MMM d, yyyy". Casper
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Julklappsleken</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <meta name="author" content="Casper 'Cabbe' Björk">
+
+    </head>
+    <body>
+  <header class="navbar-inverse">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Julklappsleken</a>
+                  </div>
+
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li><a href="index.html">Startsida </a></li>
+                      <li class="active"><a href="game.html">Spela!<span class="sr-only">(current)</span></a> </li>
+                      <li><a href="omoss.html">Om oss</a> </li>
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+             </nav>
+        </header>
+        <div class="container">
+            
+            <div class="row">       <!-- Regler -->
+               <div class="col-lg-4 col-sm-6 col-xs-12">
+                <button class="btn btn-lg btn-block btn-info" type="button" data-toggle="collapse" data-target="#regelfonster"  aria-controls="regelfonster" style="margin-bottom: 10px;"> Regler</button>
+               </div>
+            </div>
+            <div class="collapse" id="regelfonster">
+                <div class="well well-lg">      <!-- Info window -->
+                    <p> Spelets regler går till på följande sätt: </p>
+                    <ul>
+                        <li>
+                            Regel 1.
+                        </li>
+                        <li>
+                            Regel 2.
+                        </li>
+                        <li>
+                            Regel 3.
+                        </li>
+                        <li>
+                            Regel 4.
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row" style="margin-bottom: 10px;">      <!-- Phase 2 -->
+                <div class="col-lg-4 col-sm-6 col-xs-12" >
+                    <button type="button" class="btn btn-block btn-lg btn-warning" onclick="phase2()"  id="phase2"> Paketutdelning klar </button>
+                </div>
+            </div>
+
+            <div class="row">       <!-- Dice begins -->
+                <div class="panel panel-success" style="text-align:center">
+                    <div class="panel-body">
+                        <p id="dice"> 0 </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-sm-12 col-xs-12">     <!-- Dice -->
+                    <button type="button" class="btn btn-success btn-block btn-lg" id="dicebtn" onclick="diceroll()"> Rulla tärningen </button> 
+                </div>
+            </div>
+            <div class="row">       <!-- Action panel -->
+                <div class="panel panel-info" id="spacing" style="text-align:center">
+                    <div class="panel-body">
+                        <p id="action" style="font-size: 32px;"> - </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="speljs.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        
+    </body>
+</html>
