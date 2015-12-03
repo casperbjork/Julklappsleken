@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <html>
     <head>
-        <title>Julklappsleken</title>
+        <title>JL - Spel</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/homepage.css">
@@ -28,34 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     </head>
     <body>
-  <header class="navbar-inverse">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html">Julklappsleken</a>
-                  </div>
-
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                      <li><a href="index.html">Startsida </a></li>
-                      <li class="active"><a href="game.html">Spela!<span class="sr-only">(current)</span></a> </li>
-                      <li><a href="omoss.html">Om oss</a> </li>
-                    </ul>
-                  </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-             </nav>
-        </header>
-        <div class="container">
-            
-            <div class="row">       <!-- Regler -->
+        <div class="container"> 
+     
+            <div class="row" style="margin-top: 10px;">
+                                
+                <!-- Regler -->
                <div class="col-lg-4 col-sm-6 col-xs-12">
                 <button class="btn btn-lg btn-block btn-info" type="button" data-toggle="collapse" data-target="#regelfonster"  aria-controls="regelfonster" style="margin-bottom: 10px;"> Regler</button>
                </div>
@@ -86,23 +63,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     <button type="button" class="btn btn-block btn-lg btn-warning" onclick="phase2()"  id="phase2"> Paketutdelning klar </button>
                 </div>
             </div>
+            
+            <div class="row" style="margin-top: 10px;"> 
+                <div class="alert alert-danger">
+                    <p style="font-size: 25px;">Player turn.</p>
+                </div> 
+            </div>
 
             <div class="row">       <!-- Dice begins -->
                 <div class="panel panel-success" style="text-align:center">
                     <div class="panel-body">
-                        <p id="dice"> 0 </p>
+                        <p style="font-size: 32px" id="dice"> 0 </p>
                     </div>
                 </div>
 
-                <div class="col-lg-12 col-sm-12 col-xs-12">     <!-- Dice -->
-                    <button type="button" class="btn btn-success btn-block btn-lg" id="dicebtn" onclick="diceroll()"> Rulla tärningen </button> 
-                </div>
             </div>
             <div class="row">       <!-- Action panel -->
                 <div class="panel panel-info" id="spacing" style="text-align:center">
                     <div class="panel-body">
                         <p id="action" style="font-size: 32px;"> - </p>
                     </div>
+                </div>
+                <div class="col-lg-12 col-sm-12 col-xs-12">     <!-- Dice -->
+                    <button type="button" class="btn btn-success btn-block btn-lg" id="dicebtn" onclick="diceroll()"> Rulla tärningen </button> 
                 </div>
             </div>
         </div>
