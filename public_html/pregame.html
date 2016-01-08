@@ -42,5 +42,37 @@ and open the template in the editor.
              </nav>
      </header>
         
+     <div class="container">
+        <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-8 col-xs-12">
+                        <p>Ställ in spelet för hur ni vill spela.</p>
+                        
+                        <p>När ni är klara klickar ni på den gröna knappen för att börja spela, tiden startar inte
+                            för ens ni är klara med paketutdelningen.</p>
+                        
+                        <p>Börja med att ange hur många av er som ska spela.</p>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <div class="input-group input-group-lg" id="stage1pre">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" onclick="playerSetting()" type="button">Nästa steg</button>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Antal spelare...">
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <div id="test"></div>
+            </div>    
+        </div>
+    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script> 
+        <script src="pregamejs.js"></script>
     </body>   
 </html>
