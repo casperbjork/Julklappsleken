@@ -1,21 +1,13 @@
 # Gymnasiearbete
 
-function turns() {
-            roundsLeft = Math.floor((15+Math.random()*15));
-            window.alert("Nu starta nedräkningen "+ "("+ roundsLeft + ")");
-            document.getElementById("phase2").style.visibility = "hidden";
-        }
-
-
-var setting_timer = 0;
-var setting_numbplayer = 0;
-
-function startgame(setting_timer, setting_numbplayer) {
-    if (setting_timer === 1) {
-        turns();
-    } else {
-        timer();
-    }
-    
-    document.getElementById("test").innerHTML ="setting_numbplayer";
-}
+            TODO list:
+            
+            @pregame.html || pregame.js = Lägg till en generator för antal spelare
+                        [] Övergången + Inputfältets sammanvävning.
+                        [*] Mallen.
+                        [] playerSetting() färdig gjord och sammanvävd med övergången.
+                        [] Lägg till bilder som val i mallen.
+                        
+            @pregame.js || game.js = Skriv en cookie skapare och läsare.
+                        [] Skapa en cookie för antal spelare
+                        [] Skapa en avläsare som läser av informationen i cookien
