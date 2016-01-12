@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>JL - Inställningar</title>
@@ -56,18 +52,25 @@ and open the template in the editor.
                 </div>
             </div>
         <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-danger" role="alert" style="display: block" id="inputAlertS1Div">
+                    <p id="inputAlertS1">...</p>
+                </div>
+            </div>
+        </div> 
+        <div class="row">
             <div class="col-lg-4 col-xs-12">
                 <div class="input-group input-group-lg" id="stage1pre">
                         <span class="input-group-btn">
-                            <button class="btn btn-default" onclick="playerSetting()" type="button">Nästa steg</button>
+                            <button class="btn btn-default" onclick="submitnumplayers()" type="button">Nästa steg</button>
                         </span>
-                        <input type="text" class="form-control" placeholder="Antal spelare...">
+                        <input type="text" class="form-control" id="inputnumplayers" placeholder="Antal spelare...">
                     </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 10px;">
             <div class="col-lg-4 col-xs-12">
-                <div id="test"></div>
+                <div id="playerscreen"></div>
             </div>    
         </div>
     </div>
