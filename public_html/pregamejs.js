@@ -10,8 +10,7 @@ function submitnumplayers(){
 //        }
 //        catch(err) {
 //            var alertText = document.getElementById("inputAlertS1");
-//            var alertDiv = document.getElementById("inputAlertS1Div");
-//            alertText.innerHTML(err);
+//            alertText.innerHTML = err;
 //                    
 //        }
     playerSetting(input);
@@ -62,7 +61,9 @@ function playerSetting(numplayers){
              
         var element = document.getElementById("playerscreen");
         element.appendChild(well);
-        document.getElementById("playerBtn"+x).addEventListener("click", okName);
+        document.getElementById("playerBtn"+x).addEventListener("click", function(){
+            okName(this);
+        });
     }
 }
 
@@ -75,10 +76,19 @@ function clearPlayerSetting() {
         }
 }
 
-function okName() {
-    var btn = document.getElementById(this);
-    var player = btn.substr(9);
-    var text = document.getElementById("playername"+player);
-    var input = document.getElementById("playerinput"+player);
-    text.innerHTML(input);
+function okName(btn) {
+    var clickbtn = btn.id;
+    var player = clickbtn.substr(9);
+
+    var inputtext = document.getElementById("playerinput"+player).value;
+    console.log(inputtext);
+//        if (inputtext === null) {
+//            inputtext = "Du måste skriva någonting!";
+//        }
+    var text = document.createElement("p");
+        text.innerHTML = inputtext; 
+    
+    document.getElementById("player"+player).replaceChild(text, document.getElementById("player"+player).firstChild);
+        
+    
 }
