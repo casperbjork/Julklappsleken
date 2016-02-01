@@ -1,11 +1,11 @@
-# Gymnasiearbete
+﻿# Gymnasiearbete
 
             TODO list:
             
             @pregame.html || pregame.js = Lägg till en generator för antal spelare
-                        [] Övergången + Inputfältets sammanvävning.
+                        [*] Övergången + Inputfältets sammanvävning.
                         [*] Mallen.
-                        [] playerSetting() färdig gjord och sammanvävd med övergången.
+                        [*] playerSetting() färdig gjord och sammanvävd med övergången.
                         [] Lägg till bilder som val i mallen.
                         
             @pregame.js || game.js = Skriv en cookie skapare och läsare.
