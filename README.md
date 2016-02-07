@@ -2,9 +2,9 @@
 
 ToDo List:
 ## @pregame.html || pregame.js = Lägg till en generator för antal spelare
-- [ ] Övergången + Inputfältets sammanvävning.
+- [x] Övergången + Inputfältets sammanvävning.
 - [x] Mallen.
-- [ ] playerSetting() färdig gjord och sammanvävd med övergången.
+- [x] playerSetting() färdig gjord och sammanvävd med övergången.
 - [ ] Lägg till bilder som val i mallen.
             
 ## @pregame.js || game.js = Skriv en cookie skapare och läsare.

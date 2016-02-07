@@ -2,18 +2,24 @@
 
 function submitnumplayers(){
     var input = document.getElementById("inputnumplayers").value;
-//funkar inte...
-//        try {                                                                   
-//            if (input === 0) throw "Du måste ha minst två spelare";
-//            if (input === "") throw "Rutan är tom";
-//            if (isNaN(input)) throw "Det är ingen siffra";
-//        }
-//        catch(err) {
-//            var alertText = document.getElementById("inputAlertS1");
-//            alertText.innerHTML = err;
-//                    
-//        }
+    var alertText = document.getElementById("inputAlertS1");
+    var alertTextDiv = document.getElementById("inputAlertS1Div");
+        try {                                                          
+            if (input === "0") throw "Du måste ha minst två spelare.";
+            if (input === "1") throw "Du måste ha minst två spelare.";
+            if (input === "") throw "Rutan är tom.";
+            if (isNaN(input)) throw "Du måste använda siffror för att skriva in antalet spelare.";
+        }
+        catch(e) {
+            alertTextDiv.style.display = "block";
+            alertText.innerHTML = e;
+            return "";
+        }
+        
     playerSetting(input);
+    alertTextDiv.style.display = "none";
+    document.getElementById("steg1").innerHTML = "Uppdatera";
+    document.getElementById("steg2div").style.display = "inline";     
 }
 
 
@@ -79,12 +85,7 @@ function clearPlayerSetting() {
 function okName(btn) {
     var clickbtn = btn.id;
     var player = clickbtn.substr(9);
-
     var inputtext = document.getElementById("playerinput"+player).value;
-    console.log(inputtext);
-//        if (inputtext === null) {
-//            inputtext = "Du måste skriva någonting!";
-//        }
     var text = document.createElement("p");
         text.innerHTML = inputtext; 
     
