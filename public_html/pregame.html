@@ -30,7 +30,7 @@
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                       <li><a href="index.html">Startsida </a></li>
-                      <li class="active"><a href="game.html">Spela!<span class="sr-only">(current)</span></a> </li>
+                      <li class="active"><a href="pregame.html">Spela!<span class="sr-only">(current)</span></a> </li>
                       <li><a href="omoss.html">Om oss</a> </li>
                     </ul>
                   </div><!-- /.navbar-collapse -->
@@ -42,12 +42,12 @@
         <div class="jumbotron">
                 <div class="row">
                     <div class="col-sm-8 col-xs-12">
-                        <p>Ställ in spelet för hur ni vill spela.</p>
-                        
-                        <p>När ni är klara klickar ni på den gröna knappen för att börja spela, tiden startar inte
-                            för ens ni är klara med paketutdelningen.</p>
-                        
-                        <p>Börja med att ange hur många av er som ska spela.</p>
+                        <p id="infoTextPreGame">Ställ in spelet för hur ni vill spela. <br />
+                        <br />
+                        När ni är klara klickar ni på den gröna knappen för att börja spela, tiden startar inte
+                        för ens ni är klara med paketutdelningen. <br />
+                        <br />
+                        Börja med att ange hur många av er som ska spela sedan klicka på knappen "Fortsätt".</p>
                     </div>
                 </div>
             </div>
@@ -60,8 +60,8 @@
         </div>
          
         <div class="row">
-            <div class="col-lg-5 col-xs-12" id="steg2div" style="display: none; margin-bottom: 10px">
-                <button class="btn btn-lg btn-success btn-block" id="steg2" type="submit">Nästa steg</button>
+            <div class="col-lg-5 col-xs-12" id="stage2div" style="display: none; margin-bottom: 10px">
+                <button class="btn btn-lg btn-success btn-block" id="stage2btn" onclick="stage2()" type="submit">Nästa steg</button>
             </div>
         </div>
         <div class="row">
