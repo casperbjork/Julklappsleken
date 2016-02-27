@@ -12,6 +12,6 @@ ToDo List:
 - [x] Skapa en avläsare som läser av informationen i cookien
 - [x] Skapa en function som fyller i namnen vid återanslutning.
 
-## @game.js || @game.html = Väva en spelnamnen och överlag förbättring.
+## @game.js || @game.html = Väva in spelnamnen och överlag förbättring.
 - [ ] Visa vems tur det är i spelet.
 - [ ] Förbättra spel upplägg.
