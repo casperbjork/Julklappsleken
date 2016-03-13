@@ -16,68 +16,78 @@
         <div class="container"> 
      
             <div class="row" style="margin-top: 10px;">
-                                
-                <!-- Regler -->
-               <div class="col-lg-4 col-sm-6 col-xs-12">
-                <button class="btn btn-lg btn-block btn-info" type="button" data-toggle="collapse" data-target="#regelfonster"  aria-controls="regelfonster" style="margin-bottom: 10px;"> Regler</button>
-               </div>
-            </div>
-            <div class="collapse" id="regelfonster">
-                <div class="well well-lg">      <!-- Info window -->
-                    <p> Spelets regler går till på följande sätt: </p>
-                    <ul>
-                        <li>
-                            Regel 1.
-                        </li>
-                        <li>
-                            Regel 2.
-                        </li>
-                        <li>
-                            Regel 3.
-                        </li>
-                        <li>
-                            Regel 4.
-                        </li>
 
-                    </ul>
+        <!--       
+                   <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <button class="btn btn-lg btn-block btn-info" type="button" data-toggle="collapse" data-target="#regelfonster"  aria-controls="regelfonster" style="margin-bottom: 10px;"> Regler</button>
+                   </div>
                 </div>
-            </div>
-            
-            <div class="row" style="margin-bottom: 10px;">      <!-- Phase 2 -->
-                <div class="col-lg-4 col-sm-6 col-xs-12" >
-                    <button type="button" class="btn btn-block btn-lg btn-warning" onclick="phase2()"  id="phase2"> Paketutdelning klar </button>
-                </div>
-            </div>
-            
-            <div class="row" style="margin-top: 10px;"> 
-                <div class="alert alert-danger">
-                    <p style="font-size: 25px;">Player turn.</p>
-                </div> 
-            </div>
+                <div class="collapse" id="regelfonster">
+                    <div class="well well-lg">      <!-- Info window 
+                        <p> Spelets regler går till på följande sätt: </p>
+                        <ul>
+                            <li>
+                                Regel 1.
+                            </li>
+                            <li>
+                                Regel 2.
+                            </li>
+                            <li>
+                                Regel 3.
+                            </li>
+                            <li>
+                                Regel 4.
+                            </li>
 
-            <div class="row">       <!-- Dice begins -->
-                <div class="panel panel-success" style="text-align:center">
-                    <div class="panel-body">
-                        <p style="font-size: 32px" id="dice"> 0 </p>
+                        </ul>
                     </div>
                 </div>
-
-            </div>
-            <div class="row">       <!-- Action panel -->
-                <div class="panel panel-info" id="spacing" style="text-align:center">
-                    <div class="panel-body">
-                        <p id="action" style="font-size: 32px;"> - </p>
+        -->        
+                <div class="row" style="margin-bottom: 10px;">      <!-- Phase 2 -->
+                    <div class="col-lg-4 col-sm-6 col-xs-12" >
+                        <button type="button" class="btn btn-block btn-lg btn-warning" onclick="startTimer()"  id="starttimerbtn"> Paketutdelning färdig </button>
                     </div>
                 </div>
-                <div class="col-lg-12 col-sm-12 col-xs-12">     <!-- Dice -->
-                    <button type="button" class="btn btn-success btn-block btn-lg" id="dicebtn" onclick="diceroll()"> Rulla tärningen </button> 
+        
+                 <div class="row" style="margin-top: 10px;"> 
+                    <div class="alert alert-warning" id="gamestart" style="display: none">
+                        <p style="font-size: 25px;"> Nu har tiden startat! </p>
+                    </div> 
+                </div>
+
+                <div class="row" style="margin-top: 10px;"> 
+                    <div class="alert alert-info">
+                        <p id="playerturn" style="font-size: 25px;"> - </p>
+                    </div> 
+                </div>
+
+                <div class="row">       <!-- Dice begins -->
+                    <div class="well">
+                        <div class="panel panel-success" style="text-align:center">
+                            <div class="panel-body">
+                                <p style="font-size: 32px" id="dice"> 0 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">       <!-- Action panel -->
+                    <div class="well" id="Actionwell" style='display: none'>
+                        <div class="panel panel-info" id="spacing" style="text-align:center">
+                            <div class="panel-body">
+                                <p id="action" style="font-size: 26px;"> - </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">     <!-- Dice -->
+                        <button type="button" class="btn btn-success btn-block btn-lg" id="dicebtn" style="padding: 20px" onclick="diceroll()"> Rulla tärningen </button> 
+                    </div>
                 </div>
             </div>
         </div>
-
-        <script src="speljs.js"></script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        
+        <script src="cookiesgame.js"></script>
+        <script src="gamejs.js"></script>
     </body>
 </html>

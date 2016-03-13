@@ -1,5 +1,4 @@
 //Cookie skapare... 
-
 var text = ["Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen."];
 
 
@@ -49,7 +48,7 @@ function playerSetting(numplayers){
             var inputSpan = document.createElement("span");                 //skapar span
             inputSpan.className = "input-group-btn";
         
-                var inputBtn = document.createElement("button");           //skapar knapppen
+                var inputBtn = document.createElement("button");           //skapar knappen
                 inputBtn.className = "btn";
                 inputBtn.className += " btn-default";
                 inputBtn.type = "button";
@@ -66,7 +65,6 @@ function playerSetting(numplayers){
                     inputSpan.appendChild(inputBtn);
                     inputBtnDiv.appendChild(namefield);                   //sätter ihop hela inputen.
                     inputBtnDiv.appendChild(inputSpan);
-
                     well.appendChild(inputBtnDiv);
              
         var element = document.getElementById("playerscreen");
@@ -78,84 +76,17 @@ function playerSetting(numplayers){
     var cookies = document.cookie.split(";");
     for (var x = 0; x < cookies.length; x++) {
         var cookieexist = checkPlayerCookie(x+1);
-        console.log(x+1);
-        if (cookieexist === true) {
-            var name = getPlayerName(x+1);
-            console.log(name);
-            var text = document.createElement("p");
-            text.innerHTML = name; 
-
-            document.getElementById("player"+(x+1)).replaceChild(text, document.getElementById("player"+(x+1)).firstChild);
-
+        var cookieplayer = checkIfPlayer(x);
+        if (cookieplayer === true) {
+            if (cookieexist === true) {
+                var name = getPlayerName(x+1);
+                var text = document.createElement("p");
+                text.innerHTML = name;
+                document.getElementById("player"+(x+1)).replaceChild(text, document.getElementById("player"+(x+1)).firstChild);
+            }
         }
     }     
 }
-
-function createPlayerCookie(playernum, playername) {
-    var currdate = new Date();
-    var expiredate = currdate.setHours(currdate.getHours()+1);
-    document.cookie="player"+playernum +"=" +playername +"; expires="+expiredate;
-}
-
-function checkPlayerCookie(playernum) {
-    var cookies = document.cookie.split(";");
-    if (playernum >= 10) {
-        for (var x = 10; x < cookies.length; x++){
-           if (cookies[x].substr(7, 2) == playernum) {
-               return true;
-           }
-        }
-    }
-    if (cookies[0].substr(6, 1) == playernum) {
-        return true;
-    }
-    for (var x = 1; x < cookies.length; x++){
-        if (cookies[x].substr(7, 1) == playernum) {
-           return true;
-       }
-   }
-       return false;
-}
-
-function checkPlayerName(playername) {
-    var cookies = document.cookie.split(";");
-        if (cookies[0].substr(8) === playername) {
-            return true;
-        }
- 
-       for (var x = 1; x < cookies.length; x++){
-           if (cookies[x].substr(9) === playername) {
-               return true;
-           } else {
-               
-           }
-        }
-    return false;
-}
-
-function getPlayerName(playernum) {
-    var cookies = document.cookie.split(";");
-    var playername = " ";
-    if (playernum >= 10) {
-        for (var x = 10; x < cookies.length; x++){
-           if (cookies[x].substr(7, 2) == playernum) {
-               playername = cookies[x].substr(10);
-               return playername;
-           }
-        }
-    }
-        if (cookies[0].substr(6, 1) == playernum) {
-            playername = cookies[0].substr(8);
-            return playername;
-        }
-       for (var x = 1; x < cookies.length; x++){
-           if (cookies[x].substr(7, 1) == playernum) {
-               playername = cookies[x].substr(9);
-               return playername;
-           }
-        }
-}
-
 
 function clearPlayerSetting() {                               
     var div = document.getElementById("playerscreen");
@@ -184,14 +115,92 @@ function okName(btn) {
     
     document.getElementById("player"+player).replaceChild(text, document.getElementById("player"+player).firstChild);
 }
+function timecookie() {
+    var alertText = document.getElementById("inputAlertS1");
+    var alertTextDiv = document.getElementById("inputAlertS1Div");
+    var inputtimevalue = document.getElementById("timeinput").value;
+        try {
+            if (isNaN(inputtimevalue)) throw "Måste vara en siffra";
+            if (inputtimevalue === 0) throw "Måste vara mer än 4 minuter";
+            if (inputtimevalue <= 4) throw "Måste vara mer än 4 minuter";
+        } catch(e) {
+            alertTextDiv.style.display = "block";
+            alertText.innerHTML = e;
+            return "";
+        }
+    var text = document.createElement("p");
+        text.innerHTML = "Spelet kommer att vara runt "+inputtimevalue+" minuter långt."; 
+    
+    document.getElementById("timewell").replaceChild(text, document.getElementById("timewell").firstChild);
+    alertTextDiv.style.display = "none";
+    inputtimevalue = randomizeTime(Number(inputtimevalue));
+    var timevalue = (inputtimevalue*60)*1000;
+    var currdate = new Date();
+    var expiredate = currdate.setHours(currdate.getHours()+1);
+    document.cookie="time="+timevalue+"; expires="+expiredate;
+}
 
 function stage2() {
+    document.getElementById("StartGame").style.display = "block";
     clearPlayerSetting();
     document.getElementById("stage1pre").style.display = "none";
     document.getElementById("stage2div").style.display = "none";
+    document.getElementById("infoTextPreGame").innerHTML = text[0];
     
-        document.getElementById("infoTextPreGame").innerHTML = text[0];
+    var well = document.createElement("div");       //skapar welln
+        well.className="well";
+        well.className +=" well-group";
+        well.id ="timewell";
+    
+        var p = document.createElement("p");                            //skapar text 
+        var textnode = document.createTextNode("Välj den ungefära tiden");
+            p.appendChild(textnode);
+            well.appendChild(p);
+            
+        var inputBtnDiv = document.createElement("div");                    //skapar hela inputen
+        inputBtnDiv.className = "input-group";
+        inputBtnDiv.className += " input-group-lg";
+        
+            var inputSpan = document.createElement("span");                 //skapar span
+            inputSpan.className = "input-group-btn";
+        
+                var inputBtn = document.createElement("button");           //skapar knappen
+                inputBtn.className = "btn";
+                inputBtn.className += " btn-default";
+                inputBtn.type = "button";
+                inputBtn.id ="timebtn";                
+                var inputBtnText = document.createTextNode("Välj tid");
+                inputBtn.appendChild(inputBtnText);
+                   
+            var namefield = document.createElement("input");            //skapar inputfältet
+            namefield.className = "form-control";
+            namefield.type = "text";
+            namefield.placeholder = "Antal minuter";
+            namefield.id = "timeinput";
+            
+            inputSpan.appendChild(inputBtn);
+                inputBtnDiv.appendChild(namefield);                   //sätter ihop hela inputen.
+                inputBtnDiv.appendChild(inputSpan);
+                well.appendChild(inputBtnDiv);
+            document.getElementById("playerscreen").appendChild(well);
+            document.getElementById("timebtn").addEventListener("click", function(){
+               timecookie();
+            });
 }
 
-//Skapa function som lägger tillbaka spelarna vid återanslutning, Skapa också en knapp som tar bort cookien.
-//Cookien ska fylla i allt för dem.
+function startgame() {
+    window.location.href = "game.html";
+}
+
+function randomizeTime(value) {
+    var newTime = 0;
+    var decider = Math.floor(1+Math.random()*2);
+    if (decider === 1) {    
+        newTime = value+(Math.floor(1+Math.random()*4));
+    } else {
+        newTime = value-(Math.floor(1+Math.random()*2));
+    }
+    return newTime;
+}
+
+//Skapa också en knapp som tar bort cookien.

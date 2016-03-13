@@ -60,11 +60,6 @@
         </div>
          
         <div class="row">
-            <div class="col-lg-5 col-xs-12" id="stage2div" style="display: none; margin-bottom: 10px">
-                <button class="btn btn-lg btn-success btn-block" id="stage2btn" onclick="stage2()" type="submit">Nästa steg</button>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-5 col-xs-12">
                 <div class="input-group input-group-lg" id="stage1pre">
                         <span class="input-group-btn">
@@ -79,9 +74,20 @@
                 <div id="playerscreen"></div>
             </div>    
         </div>
+        <div class="row">
+            <div class="col-lg-5 col-xs-12" id="stage2div" style="display: none; margin-bottom: 10px">
+                <button class="btn btn-lg btn-success btn-block" id="stage2btn" onclick="stage2()" type="submit">Nästa steg</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-xs-12" id="StartGame" style="display: none; margin-bottom: 10px">
+                <button class="btn btn-lg btn-success btn-block" id="StartGameBtn" onclick="startgame()" type="submit">Börja spela</button>
+            </div>
+        </div>
     </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script> 
+        <script src="js/bootstrap.min.js"></script>
+        <script src="cookiesgame.js"></script>
         <script src="pregamejs.js"></script>
     </body>   
 </html>
