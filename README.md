@@ -13,5 +13,5 @@ ToDo List:
 - [x] Skapa en function som fyller i namnen vid återanslutning.
 
 ## @game.js || @game.html = Väva in spelnamnen och överlag förbättring.
-- [ ] Visa vems tur det är i spelet.
-- [ ] Förbättra spel upplägg.
+- [x] Visa vems tur det är i spelet.
+- [x] Förbättra spel upplägg.
