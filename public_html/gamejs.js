@@ -4,12 +4,10 @@ var cookies = document.cookie.split(";");
 var playerList = [];
 var numplayers = amountplayers();
 for (var x = 0; x<=cookies.length; x++) {
-//    console.log("Return Value "+x+" "+checkIfPlayer(x));
     if (checkIfPlayer(x) === true) {
         playerList.push(cookies[x]);
     }
 }
-console.log(playerList);
 document.getElementById("playerturn").innerHTML = "Det är "+getPlayerName(1)+"s tur"; //Displays the first player to go.
 
 function dice() {   //Returns a number between 1-6

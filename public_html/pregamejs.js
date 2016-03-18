@@ -1,7 +1,7 @@
-//Cookie skapare...
 var playerList = [];
 var text = ["Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen."];
 var input;
+var cookies = document.cookie.split(";");
 
 function submitnumplayers(){                       //Will submit the amount of players to the playerSetting while checking any errors.
     input = document.getElementById("inputnumplayers").value;
@@ -29,13 +29,12 @@ function submitnumplayers(){                       //Will submit the amount of p
 
 function playerSetting(numplayers){     //Creates a well(box) with a input and an ID. Needs a number
     playerList = [];
-    var cookies = document.cookie.split(";");
+    cookies = document.cookie.split(";");
         for (var x = 0; x<=cookies.length; x++) {
             if (checkIfPlayer(x) === true) {
                 playerList.push(cookies[x]);
             }   
         }
-    console.log(playerList);
     clearPlayerSetting();
     for (var x=1; x<=numplayers; x++) {
     
@@ -64,8 +63,7 @@ function playerSetting(numplayers){     //Creates a well(box) with a input and a
         var element = document.getElementById("playerscreen");  
         element.appendChild(well);                                     //Puts the div on the screen
     }
-    console.log(playerList.length+" playerList length");
-    if (playerList.length > numplayers) {
+    if (playerList.length >= numplayers) {
         for (var x = 1; x <= numplayers; x++) {          //Checks if cookies already exist and if so it replaces the default player name
             var cookieexist = checkPlayerCookie(x);
             var cookieplayer = checkIfPlayer(x-1);
@@ -109,7 +107,6 @@ function confirmNames() {                                               //Create
     for (var x = 1; x<=playeramount.length; x++) {
         var inputtext = document.getElementById("playerinput"+x).value;
         if (inputtext === ""){
-//Fixa så att det inte kommer förmånga av spelarna!
         } else {
             var namecheck = checkPlayerName(inputtext);
             if (namecheck === false) {

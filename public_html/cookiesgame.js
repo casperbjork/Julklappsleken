@@ -5,7 +5,6 @@ var cookies = document.cookie.split(";");
             playerList.push(cookies[x]);
         }
     }
-//console.log(playerList);
 function playerListing() {
     var cookies = document.cookie.split(";");
     for (var x = 0; x<=cookies.length; x++) {
@@ -81,7 +80,6 @@ function getPlayerName(playernum) { // Returns players name for that number (if 
         }
     }
         if (playerList[0].substr(6, 1) == playernum) {
-            console.log(playerList[0].substr(6, 1));
             playername = playerList[0].substr(8);
             return playername;
         }
@@ -89,7 +87,6 @@ function getPlayerName(playernum) { // Returns players name for that number (if 
         for (var x = 1; x <= playerList.length; x++){
 
             if (playerList[x].substr(7, 1) == playernum) {
-                console.log(playerList[x].substr(7, 1));
                 playername = playerList[x].substr(9);
                 return playername;
            }
