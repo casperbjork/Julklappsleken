@@ -1,8 +1,17 @@
-var cookies = document.cookie.split(";");
 var playerList = [];
-for (var x = 0; x<cookies.length; x++) {
-    if (checkIfPlayer(x) === true) {
-        playerList.push(cookies[x]);
+var cookies = document.cookie.split(";");
+    for (var x = 0; x<cookies.length; x++) {
+        if (checkIfPlayer(x) === true) {
+            playerList.push(cookies[x]);
+        }
+    }
+//console.log(playerList);
+function playerListing() {
+    var cookies = document.cookie.split(";");
+    for (var x = 0; x<=cookies.length; x++) {
+        if (checkIfPlayer(x) === true) {
+            playerList.push(cookies[x]);
+        }
     }
 }
 
@@ -12,12 +21,15 @@ function createPlayerCookie(playernum, playername) { //Creates a cookie for a pl
     document.cookie="player"+playernum +"=" +playername +"; expires="+expiredate;
 }
 function checkIfPlayer(cookie) { //Check if the cookie has the value of Player
-    var cookies = document.cookie.split(";");
-    if (cookies[cookie].substr(0, 1) === "p") {
-        return true;
-    }
-    if (cookies[cookie].substr(1, 1) === "p") { 
-        return true;
+    if (cookies.length <= cookie) {
+        return false;
+    } else {
+        if (cookies[cookie].substr(0, 1) === "p") {
+            return true;
+        }
+        if (cookies[cookie].substr(1, 1) === "p") { 
+            return true;
+        }
     }
     return false;
 }
@@ -61,7 +73,7 @@ function checkPlayerName(playername) {  //Check if the playername is already tak
 function getPlayerName(playernum) { // Returns players name for that number (if it exists)
     var playername = " ";
     if (playernum >= 10) {
-        for (var x = 10; x < playerList.length; x++){
+        for (var x = 10; x <= playerList.length; x++){
            if (playerList[x].substr(7, 2) == playernum) {
                playername = playerList[x].substr(10);
                return playername;
@@ -69,18 +81,22 @@ function getPlayerName(playernum) { // Returns players name for that number (if 
         }
     }
         if (playerList[0].substr(6, 1) == playernum) {
+            console.log(playerList[0].substr(6, 1));
             playername = playerList[0].substr(8);
             return playername;
         }
-       for (var x = 1; x < playerList.length; x++){
-           if (playerList[x].substr(7, 1) == playernum) {
-               playername = playerList[x].substr(9);
-               return playername;
+       
+        for (var x = 1; x <= playerList.length; x++){
+
+            if (playerList[x].substr(7, 1) == playernum) {
+                console.log(playerList[x].substr(7, 1));
+                playername = playerList[x].substr(9);
+                return playername;
            }
         }
 }
 
-function getTime() {
+function getTime() {            //Returns the time in miliseconds
     var cookies = document.cookie.split(";");
     for (var x = 1; x < cookies.length; x++) {
         if (cookies[0].substr(0,1) === "t") {           
@@ -88,6 +104,25 @@ function getTime() {
         }
         if (cookies[x].substr(1,1)=== "t") {
             return cookies[x].substr(6);
+        }
+    }
+}
+
+function removeCookies() {  //Removes any cookies on the site (just for console currently!)
+    var cookies = document.cookie.split(";");
+    for (var x = 0; x < cookies.length; x++) {
+        document.cookie = cookies[x]+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        }
+}
+
+function amountplayers() {
+    var cookies = document.cookie.split(";");
+    for (var x = 1; x< cookies.length; x++) {
+        if (cookies[0].substr(0,1) === "n") {
+            return cookies[0].substr(11);
+        }
+        if (cookies[x].substr(1,1) === "n") {
+            return cookies[x].substr(12);
         }
     }
 }

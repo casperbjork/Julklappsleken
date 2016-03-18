@@ -1,11 +1,15 @@
+var gameover = false;
 var turn = 1;
-var cookies = document.cookie.split(";"); //Creates a list of all the players and displays player 1.
+var cookies = document.cookie.split(";");
 var playerList = [];
-for (var x = 0; x<cookies.length; x++) {
+var numplayers = amountplayers();
+for (var x = 0; x<=cookies.length; x++) {
+//    console.log("Return Value "+x+" "+checkIfPlayer(x));
     if (checkIfPlayer(x) === true) {
         playerList.push(cookies[x]);
     }
 }
+console.log(playerList);
 document.getElementById("playerturn").innerHTML = "Det är "+getPlayerName(1)+"s tur"; //Displays the first player to go.
 
 function dice() {   //Returns a number between 1-6
@@ -13,7 +17,7 @@ function dice() {   //Returns a number between 1-6
    return dice;
 }
 
-function FiveTwoRule(roll) {
+function FiveTwoRule(roll) {            //Returns a execution for a rule
     var rule = ["-",
         "Alla skickar ett paket åt höger.",
         "Du ger alla dina paket till personen som sitter tre steg åt höger.",
@@ -24,41 +28,43 @@ function FiveTwoRule(roll) {
     return rule[roll];
 }
 
-function diceroll() {
-    var roll = dice();
-    displayPlayer();
-    document.getElementById("dice").innerHTML = roll;
-    if ((document.getElementById("Actionwell").style.display) === "block") {
-        if (roll === 2 || roll === 5) {
-        document.getElementById("action").innerHTML = FiveTwoRule(roll);
-        } else {
-        document.getElementById("action").innerHTML = "-";
+function diceroll() {                   //Gets called when the dice is "rolled"
+    if(gameover === false) {
+        var roll = dice();
+        displayPlayer();
+        document.getElementById("dice").innerHTML = roll;
+        if ((document.getElementById("Actionwell").style.display) === "block") {
+            if (roll === 2 || roll === 5) {
+            document.getElementById("action").innerHTML = FiveTwoRule(roll);
+            } else {
+            document.getElementById("action").innerHTML = "-";
+            }
         }
+        document.getElementById("gamestart").style.display = "none";
     }
-    document.getElementById("gamestart").style.display = "none";
 }
 
-function displayPlayer() {
-    var numplayer = playerList.length;
-    if ((turn+1) > numplayer) {
+function displayPlayer() {          //Displayes the player which has "rolled" the dice and the next player to "roll"
+    if ((turn+1) > numplayers) {
         document.getElementById("playerturn").innerHTML = getPlayerName(turn)+" har slagit. Nästa är "+getPlayerName(1);
     } else {
         document.getElementById("playerturn").innerHTML = getPlayerName(turn)+" har slagit. Nästa är "+getPlayerName(turn+1);
     }
     turn++;
-    if (turn > numplayer) {
+    if (turn > numplayers) {
         turn = 1;
     }
 }
 
-function startTimer() {
+function startTimer() {           //Starts the timer
     setTimeout(gameOver, getTime());
     document.getElementById("Actionwell").style.display = "block";
     document.getElementById("starttimerbtn").style.display = "none";
     document.getElementById("gamestart").style.display = "block";
 }
 
-function gameOver() {
+function gameOver() {           //Ends the game and will return the player to the homepage
+    gameover = true;
     document.getElementById("action").innerHTML = "Spelet är över. Tack för att ni spelat.";
     document.getElementById("gamestart").innerHTML = "Spelet är över, går tillbaka till startsidan om 5 sekunder...";
     document.getElementById("gamestart").style.display = "block";
