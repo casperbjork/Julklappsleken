@@ -72,8 +72,8 @@ function checkPlayerName(playername) {  //Check if the playername is already tak
 function getPlayerName(playernum) { // Returns players name for that number (if it exists)
     var playername = " ";
     if (playernum >= 10) {
-        for (var x = 10; x <= playerList.length; x++){
-           if (playerList[x].substr(7, 2) == playernum) {
+        for (var x = 9; x <= playerList.length; x++){
+            if (playerList[x].substr(7, 2) == playernum) {
                playername = playerList[x].substr(10);
                return playername;
            }
@@ -85,7 +85,6 @@ function getPlayerName(playernum) { // Returns players name for that number (if 
         }
        
         for (var x = 1; x <= playerList.length; x++){
-
             if (playerList[x].substr(7, 1) == playernum) {
                 playername = playerList[x].substr(9);
                 return playername;
