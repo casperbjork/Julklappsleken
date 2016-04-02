@@ -1,5 +1,6 @@
 var playerList = [];
-var text = ["Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen."];
+var text = [" - ", "Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen.", 
+            "Nu skriver ni in ett namn för varje spelare, tänk på att inte använda några åäö eller andra tecken som inte finns med i alpabetet." ];
 var input;
 var cookies = document.cookie.split(";");
 
@@ -90,6 +91,7 @@ function playerSetting(numplayers){     //Creates a well(box) with a input and a
             }
         }
     }
+    document.getElementById("infoTextPreGame").innerHTML = text[2];
 }
 
 function clearPlayerSetting() {                                         //Clears the screen of any objects   
@@ -121,6 +123,7 @@ function confirmNames() {                                               //Create
             }
         }
     document.getElementById("stage2div").style.display = "block";
+    window.location.href = "#player1";
     var confirmbtn = document.getElementById("confirmplayersbtn");
     confirmbtn.className - " btn-success";
     confirmbtn.className += " btn-warning";
@@ -157,7 +160,7 @@ function stage2() {                                                             
     document.getElementById("stage1pre").style.display = "none";
     document.getElementById("stage2div").style.display = "none";
     document.getElementById("confirmplayersbtn").style.display = "none";
-    document.getElementById("infoTextPreGame").innerHTML = text[0];
+    document.getElementById("infoTextPreGame").innerHTML = text[1];
     
     var well = document.createElement("div");       //Creates a div with the class well
         well.className="well";

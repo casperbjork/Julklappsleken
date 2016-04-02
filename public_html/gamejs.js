@@ -15,7 +15,8 @@ function dice() {   //Returns a number between 1-6
    return dice;
 }
 
-function FiveTwoRule(roll) {            //Returns a execution for a rule
+function FiveTwoRule() {            //Returns a execution for a rule
+    var random = dice();
     var rule = ["-",
         "Alla skickar ett paket åt höger.",
         "Du ger alla dina paket till personen som sitter tre steg åt höger.",
@@ -23,7 +24,7 @@ function FiveTwoRule(roll) {            //Returns a execution for a rule
         "Du ska ge ett paket till någon som inget har.",
         "Du får ta ett paket från valfri person.",
         "Du ger bort ett av dina paket till en kompis."];
-    return rule[roll];
+    return rule[random];
 }
 
 function diceroll() {                   //Gets called when the dice is "rolled"
@@ -33,7 +34,7 @@ function diceroll() {                   //Gets called when the dice is "rolled"
         document.getElementById("dice").innerHTML = roll;
         if ((document.getElementById("Actionwell").style.display) === "block") {
             if (roll === 2 || roll === 5) {
-            document.getElementById("action").innerHTML = FiveTwoRule(roll);
+            document.getElementById("action").innerHTML = FiveTwoRule();
             } else {
             document.getElementById("action").innerHTML = "-";
             }
