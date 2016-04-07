@@ -5,14 +5,6 @@ var cookies = document.cookie.split(";");
             playerList.push(cookies[x]);
         }
     }
-function playerListing() {
-    var cookies = document.cookie.split(";");
-    for (var x = 0; x<=cookies.length; x++) {
-        if (checkIfPlayer(x) === true) {
-            playerList.push(cookies[x]);
-        }
-    }
-}
 
 function createPlayerCookie(playernum, playername) { //Creates a cookie for a player
     var currdate = new Date();
@@ -35,18 +27,19 @@ function checkIfPlayer(cookie) { //Check if the cookie has the value of Player
 
 function checkPlayerCookie(playernum) { // Checks if the player with that number exists
     var cookies = document.cookie.split(";");
+    var stringnum = playernum.toString();
     if (playernum >= 10) {
         for (var x = 10; x < cookies.length; x++){
-           if (cookies[x].substr(7, 2) == playernum) {
+           if (cookies[x].substr(7, 2) === stringnum) {
                return true;
            }
         }
     }
-    if (cookies[0].substr(6, 1) == playernum) {
+    if (cookies[0].substr(6, 1) === stringnum) {
         return true;
     }
     for (var x = 1; x < cookies.length; x++){
-        if (cookies[x].substr(7, 1) == playernum) {
+        if (cookies[x].substr(7, 1) === stringnum) {
            return true;
        }
    }
@@ -71,21 +64,22 @@ function checkPlayerName(playername) {  //Check if the playername is already tak
 
 function getPlayerName(playernum) { // Returns players name for that number (if it exists)
     var playername = " ";
+    var stringnum = playernum.toString();
     if (playernum >= 10) {
         for (var x = 9; x <= playerList.length; x++){
-            if (playerList[x].substr(7, 2) == playernum) {
+            if (playerList[x].substr(7, 2) === stringnum) {
                playername = playerList[x].substr(10);
                return playername;
            }
         }
     }
-        if (playerList[0].substr(6, 1) == playernum) {
+        if (playerList[0].substr(6, 1) === stringnum) {
             playername = playerList[0].substr(8);
             return playername;
         }
        
         for (var x = 1; x <= playerList.length; x++){
-            if (playerList[x].substr(7, 1) == playernum) {
+            if (playerList[x].substr(7, 1) === stringnum) {
                 playername = playerList[x].substr(9);
                 return playername;
            }

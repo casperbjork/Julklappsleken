@@ -1,6 +1,6 @@
 var playerList = [];
-var text = [" - ", "Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen.", 
-            "Nu skriver ni in ett namn för varje spelare, tänk på att inte använda några åäö eller andra tecken som inte finns med i alpabetet." ];
+var text = [" - ", "Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen." 
+            ,"Nu skriver ni in ett namn för varje spelare, tänk på att inte använda några åäö eller andra tecken som inte finns med i alpabetet." ];
 var input;
 var cookies = document.cookie.split(";");
 
@@ -66,29 +66,18 @@ function playerSetting(numplayers){     //Creates a well(box) with a input and a
     }
     if (playerList.length >= numplayers) {
         for (var x = 1; x <= numplayers; x++) {          //Checks if cookies already exist and if so it replaces the default player name
-            var cookieexist = checkPlayerCookie(x);
-            var cookieplayer = checkIfPlayer(x-1);
-            if (cookieplayer === true) {
-                if (cookieexist === true) {
                     var name = getPlayerName(x);
                     var text = document.createElement("p");
                     text.innerHTML = name;
                     document.getElementById("player"+x).replaceChild(text, document.getElementById("player"+x).firstChild);
-                }
-            }
         }
     } else {    
         for (var x = 1; x <= playerList.length; x++) {          //Checks if cookies already exist and if so it replaces the default player name
-            var cookieexist = checkPlayerCookie(x);
-            var cookieplayer = checkIfPlayer(x-1);
-            if (cookieplayer === true) {
-                if (cookieexist === true) {
                     var name = getPlayerName(x);
                     var text = document.createElement("p");
                     text.innerHTML = name;
                     document.getElementById("player"+x).replaceChild(text, document.getElementById("player"+x).firstChild);
-                }
-            }
+
         }
     }
     document.getElementById("infoTextPreGame").innerHTML = text[2];
