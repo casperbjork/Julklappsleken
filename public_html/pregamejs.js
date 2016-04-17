@@ -1,8 +1,8 @@
-var playerList = [];
+var playerListpregame = [];
 var text = [" - ", "Sista steget innan vi kan börja spela. <br /> <br /> Välj en tid som ni vill spela runt. Datorn kommer att sätta en specifik tid som ingen får veta. <br /> <br /> När ni känner er klara så klickar ni på <b>Börja spela</b> knappen." 
-            ,"Nu skriver ni in ett namn för varje spelare, tänk på att inte använda några åäö eller andra tecken som inte finns med i alpabetet." ];
+            ,"Nu skriver ni in ett namn för varje spelare, tänk på att inte använda några åäö eller andra tecken som inte finns med i alpabetet. <br /> <br /> När ni är klara går ni längst ner på skärmen och klickar på <b>Välj spelar namn</b>. Det går att ändra sitt namn och då skriver man bara om sitt namn i rätt ruta och klickar på samma knapp igen." ];
 var input;
-var cookies = document.cookie.split(";");
+var cookiespregame = document.cookie.split(";");
 
 function submitnumplayers(){                       //Will submit the amount of players to the playerSetting while checking any errors.
     input = document.getElementById("inputnumplayers").value;
@@ -29,14 +29,15 @@ function submitnumplayers(){                       //Will submit the amount of p
 
 
 function playerSetting(numplayers){     //Creates a well(box) with a input and an ID. Needs a number
-    playerList = [];
-    cookies = document.cookie.split(";");
-        for (var x = 0; x<=cookies.length; x++) {
+    playerListpregame = [];
+    cookiespregame = document.cookie.split(";");
+        for (var x = 0; x<=cookiespregame.length; x++) {
             if (checkIfPlayer(x) === true) {
-                playerList.push(cookies[x]);
+                playerListpregame.push(cookiespregame[x]);
             }   
         }
     clearPlayerSetting();
+    document.getElementById("infoTextPreGame").innerHTML = text[2];
     for (var x=1; x<=numplayers; x++) {
     
         var well = document.createElement("div");       //creates a div with the class well
@@ -45,8 +46,8 @@ function playerSetting(numplayers){     //Creates a well(box) with a input and a
         well.id ="player"+x;
         
             var p = document.createElement("p");                            //creates a text 
-            var text = document.createTextNode("Spelaren "+ x +":");
-            p.appendChild(text);
+            var nodetext = document.createTextNode("Spelaren "+ x +":");
+            p.appendChild(nodetext);
             p.id ="playername"+x;
             well.appendChild(p);
         
@@ -64,23 +65,22 @@ function playerSetting(numplayers){     //Creates a well(box) with a input and a
         var element = document.getElementById("playerscreen");  
         element.appendChild(well);                                     //Puts the div on the screen
     }
-    if (playerList.length >= numplayers) {
+    if (playerListpregame.length >= numplayers) {
         for (var x = 1; x <= numplayers; x++) {          //Checks if cookies already exist and if so it replaces the default player name
                     var name = getPlayerName(x);
-                    var text = document.createElement("p");
-                    text.innerHTML = name;
-                    document.getElementById("player"+x).replaceChild(text, document.getElementById("player"+x).firstChild);
+                    var nodetext2 = document.createElement("p");
+                    nodetext2.innerHTML = name;
+                    document.getElementById("player"+x).replaceChild(nodetext2, document.getElementById("player"+x).firstChild);
         }
     } else {    
-        for (var x = 1; x <= playerList.length; x++) {          //Checks if cookies already exist and if so it replaces the default player name
+        for (var x = 1; x <= playerListpregame.length; x++) {          //Checks if cookies already exist and if so it replaces the default player name
                     var name = getPlayerName(x);
-                    var text = document.createElement("p");
-                    text.innerHTML = name;
-                    document.getElementById("player"+x).replaceChild(text, document.getElementById("player"+x).firstChild);
+                    var nodetext3 = document.createElement("p");
+                    nodetext3.innerHTML = name;
+                    document.getElementById("player"+x).replaceChild(nodetext3, document.getElementById("player"+x).firstChild);
 
         }
     }
-    document.getElementById("infoTextPreGame").innerHTML = text[2];
 }
 
 function clearPlayerSetting() {                                         //Clears the screen of any objects   
@@ -197,19 +197,26 @@ function stage2() {                                                             
 
 function startgame() {              //Redirects the user to the final game screen.
     var cookies = document.cookie.split(";");
+    var timecookie = false;
     for (var x = 1; x < cookies.length; x++) {
         if (cookies[0].substr(0, 1) === "t") {
+            timecookie = true;
             document.getElementById("inputAlertS1Div").style.display = "none";
             window.location.href = "game.html";
         }
         if (cookies[x].substr(1, 1) === "t") {
+            timecookie = true;
             document.getElementById("inputAlertS1Div").style.display = "none";
             window.location.href = "game.html";
         }
     }
-    var alertText = document.getElementById("inputAlertS1");
-    document.getElementById("inputAlertS1Div").style.display = "block";
-    alertText.innerHTML = "Du måste ange en tid!";
+    if (timecookie === true) { 
+        document.getElementById("inputAlertS1Div").style.display = "none";
+    } else {
+        var alertText = document.getElementById("inputAlertS1");
+        document.getElementById("inputAlertS1Div").style.display = "block";
+        alertText.innerHTML = "Du måste ange en tid!";
+    }
 }
 
 function randomizeTime(value) {     //Adds or removes some minuets from the given number 
@@ -222,5 +229,3 @@ function randomizeTime(value) {     //Adds or removes some minuets from the give
     }
     return newTime;
 }
-//Reminder / TODO:
-//Skapa också en knapp som tar bort cookien.

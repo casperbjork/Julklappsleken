@@ -1,11 +1,11 @@
 var gameover = false;
 var turn = 1;
-var cookies = document.cookie.split(";");
-var playerList = [];
+var cookiesgameJs = document.cookie.split(";");
+var playerListgameJs = [];
 var numplayers = amountplayers();
-for (var x = 0; x<=cookies.length; x++) {
+for (var x = 0; x<=cookiesgameJs.length; x++) {
     if (checkIfPlayer(x) === true) {
-        playerList.push(cookies[x]);
+        playerListgameJs.push(cookiesgameJs[x]);
     }
 }
 document.getElementById("playerturn").innerHTML = "Det är "+getPlayerName(1)+"s tur"; //Displays the first player to go.
